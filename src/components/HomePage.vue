@@ -4,41 +4,28 @@
             Это будет список в списке и списком погонять
         </h1>
         <div class="list">
-            <div v-for="(item, index) in $store.state.list" :key="index">
-                <div class="list-bar">
-                    {{item.nameListHouse}}
-                    <div class="bottom-bar" @click="openName(index)">
-                        <img src="../../public/note_alt_FILL0_wght400_GRAD0_opsz48.png" width="30" height="30">
-                    </div>
-                </div>
-                <NameRoom v-if="index === num" :itemNameRoom="item.jobList"/>
-            </div>
+            <ul>
+              <tree-item class="item" :item="$store.state.list"></tree-item>
+            </ul>
         </div>
     </div>
 </template>
 
 
 <script>
-    import NameRoom from './NameRoom.vue';
+    import TreeItem from './TreeItem.vue';
 
     export default {
         name: 'HomePage',
         components: {
-            NameRoom
+            TreeItem
         },
         data() {
             return {
-                visibleList: false,
-                num: '',
             }
         },
         methods: {
-            openName(item) {
-                if (this.num === item) {
-                    this.num = null;
-                }
-                this.num = item;
-            },
+
         },
         mounted() {
 
